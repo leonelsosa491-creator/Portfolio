@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg site-nav" aria-label="Navegación principal">
+    <div class="container nav-container">
+        <a class="navbar-brand site-brand" href="{% url 'home' %}" aria-label="Leonel Sosa, inicio">leonel<span>.</span></a>
+        <button class="navbar-toggler site-nav__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Abrir navegación">
+            <span></span><span></span>
+        </button>
+        <div class="collapse navbar-collapse" id="siteNavigation">
+            <div class="navbar-nav site-nav__links ms-auto">
+                <a class="nav-link" href="{% url 'home' %}#about">Sobre mí</a>
+                <a class="nav-link" href="{% url 'home' %}#skills">Habilidades</a>
+                <a class="nav-link" href="{% url 'home' %}#projects">Proyectos</a>
+                <a class="nav-link" href="{% url 'blog:posts' %}">Blog</a>
+                <a class="nav-link site-nav__contact" href="{% url 'home' %}#contact">Contacto <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="hero" id="home">
+
+    <h1 class="hero__headline" aria-label="Hola, soy Leonel">
+        <span class="hero__word" aria-hidden="true"><span class="hero__letter" style="--letter-index: 0">H</span><span class="hero__letter" style="--letter-index: 1">o</span><span class="hero__letter" style="--letter-index: 2">l</span><span class="hero__letter" style="--letter-index: 3">a</span><span class="hero__letter" style="--letter-index: 4">,</span></span>
+        <span class="hero__word" aria-hidden="true"><span class="hero__letter" style="--letter-index: 5">s</span><span class="hero__letter" style="--letter-index: 6">o</span><span class="hero__letter" style="--letter-index: 7">y</span></span>
+        <span class="hero__word hero__name" aria-hidden="true"><span class="hero__letter" style="--letter-index: 8">L</span><span class="hero__letter" style="--letter-index: 9">e</span><span class="hero__letter" style="--letter-index: 10">o</span><span class="hero__letter" style="--letter-index: 11">n</span><span class="hero__letter" style="--letter-index: 12">e</span><span class="hero__letter" style="--letter-index: 13">l</span></span>
+    </h1>
+    <h2>Desarrollador web full-stack</h2>
+    <p class="hero__copy">
+        Diseño y construyo experiencias digitales funcionales, combinando tecnología y atención por los detalles.
+    </p>
+    <div class="hero__actions">
+        <a class="button button--primary" href="#projects">Ver proyectos <span aria-hidden="true">↘</span></a>
+        <a class="button button--outline" href="#about">Conocé más sobre mí</a>
+    </div>
+    <div class="hero__art" aria-hidden="true">
+        <div class="hero__orbit hero__orbit--outer"></div>
+        <div class="hero__orbit hero__orbit--inner"></div>
+        <span class="hero__monogram">LS</span>
+        <span class="hero__spark hero__spark--one">✳</span>
+        <span class="hero__spark hero__spark--two">✦</span>
+    </div>
+    <a class="hero__scroll" href="#about"><span></span> Deslizá para explorar</a>
+</section>
+
+<section class="section about-section" id="about">
+    <div class="section-heading">
+        <p class="eyebrow">About me </p>
+        <h2>Ideas claras, <span>soluciones útiles.</span></h2>
+    </div>
+    <div class="about-grid">
+        <div class="about-copy">
+            <p>
+                Soy Leonel Sosa, desarrollador web con interés en crear herramientas digitales que sean simples de usar y sólidas por dentro.
+            </p>
+            <p>
+                Trabajo principalmente con Python y Django, desde la lógica de una aplicación hasta las interfaces que conectan cada pieza.
+            </p>
+            <a class="text-link" href="#skills">Conocé mis herramientas <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="about-photo" role="img" aria-label="Gato como imagen provisoria para la foto de Leonel">
+            <span class="about-photo__label">FOTO DE PERFIL</span>
+            <span class="about-photo__cat" aria-hidden="true">🐈</span>
+            <span class="about-photo__caption">Leonel Sosa</span>
+        </div>
+        <div class="about-note">
+            <span class="about-note__index">01 / ENFOQUE</span>
+            <span class="about-note__symbol" aria-hidden="true">✳</span>
+            <p>Construir con intención. Resolver con claridad. Cuidar cada detalle.</p>
+            <span class="about-note__line"></span>
+        </div>
+    </div>
+</section>
+
+<section class="section skills-section" id="skills">
+    <div class="section-heading section-heading--center">
+        <p class="eyebrow">MI CAJA DE HERRAMIENTAS</p>
+        <h2>Tecnologías &amp; habilidades</h2>
+        <p class="section-intro">Las herramientas que uso para transformar ideas en productos web.</p>
+    </div>
+    <div class="skills-grid">
+        <article class="skill-card">
+            <span class="skill-card__number">01</span>
+            <h3>Desarrollo</h3>
+            <ul class="tag-list">
+                <li>Python</li><li>Django</li><li>HTML</li><li>CSS</li><li>JavaScript</li>
+            </ul>
+        </article>
+        <article class="skill-card">
+            <span class="skill-card__number">02</span>
+            <h3>Datos &amp; servicios</h3>
+            <ul class="tag-list">
+                <li>SQLite</li><li>Modelos</li><li>APIs</li><li>CRUD</li>
+            </ul>
+        </article>
+        <article class="skill-card">
+            <span class="skill-card__number">03</span>
+            <h3>Forma de trabajo</h3>
+            <ul class="tag-list">
+                <li>Diseño responsive</li><li>Accesibilidad</li><li>Git</li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<section class="section projects-section" id="projects">
+    <div class="section-heading section-heading--center">
+        <p class="eyebrow">SELECCIÓN DE TRABAJOS</p>
+        <h2>Proyectos <span>destacados</span></h2>
+        <p class="section-intro">Una colección de ideas y soluciones en las que fui trabajando.</p>
+    </div>
+    <div class="projects-grid">
+        {% for project in projects %}
+        <article class="project-card">
+            <div class="project-card__image">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy">
+                <span class="project-card__index">{% if forloop.counter < 10 %}0{% endif %}{{ forloop.counter }}</span>
+            </div>
+            <div class="project-card__body">
+                <p class="eyebrow">PROYECTO {{ forloop.counter|stringformat:"02d" }}</p>
+                <h3>{{ project.title }}</h3>
+                <p class="project-card__description">{{ project.description }}</p>
+                {% if project.url %}
+                <a class="text-link" href="{{ project.url }}" target="_blank" rel="noopener noreferrer">
+                    Ver código fuente <span aria-hidden="true">↗</span>
+                </a>
+                <a class="text-link" href="https://stocky-beta-wine.vercel.app/" target="_blank" rel="noopener noreferrer">
+                    Probar Stocky <span aria-hidden="true">↗</span>
+                </a>
+                {% else %}
+                <span class="project-card__note">Proyecto personal</span>
+                {% endif %}
+            </div>
+        </article>
+        {% empty %}
+        <div class="empty-state">
+            <span aria-hidden="true">✳</span>
+            <p>Estoy preparando nuevos proyectos. ¡Volvé pronto!</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section contact-section" id="contact">
+    <p class="eyebrow">HASTA LA PRÓXIMA</p>
+    <h2>Gracias por pasar.</h2>
+    <p>¿Querés conocer más de lo que hago? También comparto ideas y avances en el blog.</p>
+    <a class="button button--primary" href="{% url 'blog:posts' %}">Visitar publicaciones <span aria-hidden="true">↗</span></a>
+</section>
+{% endblock %}

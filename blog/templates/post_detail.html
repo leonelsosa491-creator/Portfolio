@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ post.title }} — Leonel Sosa{% endblock %}
+
+{% block content %}
+<article class="page-shell">
+    <a class="text-link mb-4" href="{% url 'blog:posts' %}"><span aria-hidden="true">←</span> Todas las publicaciones</a>
+    <div class="post-detail mt-4">
+        <header class="page-heading">
+            <p class="eyebrow">PUBLICACIÓN · {{ post.date|date:"d/m/Y" }}</p>
+            <h1>{{ post.title }}</h1>
+        </header>
+        {% if post.image %}
+        <img src="{{ post.image.url }}" class="post-detail__image" alt="{{ post.title }}">
+        {% endif %}
+        <div class="post-detail__content">{{ post.description|safe }}</div>
+    </div>
+</article>
+{% endblock %}
