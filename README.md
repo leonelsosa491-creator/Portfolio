@@ -20,12 +20,12 @@ datos nueva. El logo del proyecto está incluido en `media/`.
 
 ## Deploy en PythonAnywhere
 
-1. Creá un repositorio GitHub llamado `portafolio`, clonalo desde una consola
-   Bash de PythonAnywhere y entrá a la carpeta:
+1. Cloná el repositorio desde una consola Bash de PythonAnywhere y entrá a la
+   carpeta:
 
    ```bash
-   git clone https://github.com/<tu-usuario>/portafolio.git
-   cd portafolio
+   git clone https://github.com/leonelsosa491-creator/Portfolio.git
+   cd Portfolio
    ```
 
 2. Creá el entorno con la versión de Python elegida al crear la Web app
